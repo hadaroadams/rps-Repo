@@ -1,13 +1,14 @@
 console.log('Hello World')
+//The initial Score before being incremented
 let botWin=0;
 let playerWin=0;
 
-
+// user name
 let user= prompt("Hello! what is your name");
 
-//alert(`Welcome to Rock, Paper, Scissors game ${userName} click OK! to begin `);
+alert(`Welcome to Rock, Paper, Scissors game ${user} click OK! to begin `);
 
-
+//The function to allow Bot to choose randomly
 function computerPlay(){
     let rps,botChoice,random;
     rps = ["rock","paper","scissors"];
@@ -16,6 +17,7 @@ function computerPlay(){
     return  botChoice;
 }
 
+//
 function playRound(playerSelection,computerSelection){
     let  rpsDatabase,message,botScore,playerScore 
     rpsDatabase = {
@@ -29,6 +31,7 @@ function playRound(playerSelection,computerSelection){
 
    
     console.log(`Bot chose ${computerSelection}`);
+    console.log(`You chose! ${player}`);
 
     if (botScore === 1){
         message = `Bot won! ${computerSelection} beat ${playerSelection}`
@@ -36,7 +39,7 @@ function playRound(playerSelection,computerSelection){
         console.log(message)
         return ( message, {botScore:1,playerScore:0})
     }else if (botScore === 0.5){
-        message = `You tie!`
+        message = `You tied!`
         //console.log (`Score`, botScore,playerScore);
         console.log(message)
         return {botScore:0,playerScore:0}
@@ -52,18 +55,40 @@ function playRound(playerSelection,computerSelection){
 function rpsGame(){
     for(i=0;i<5;i++){
         let botChoice,score
-        
+        //Bot and users choice being assigned to variables
         botChoice = computerPlay()
         player =  prompt('Choose Rock, Paper or Scissors').toLowerCase()
+
+        /*the playRound function receiving  argument
+         values and being assigned to score tobe able to use it object returns*/
         score = playRound(player,botChoice)
 
+        // incrementing of scores after each round
         botWin += score.botScore
         playerWin += score.playerScore
+
         console.log("scores \n",`Computer:${botWin}`,`${user}:${playerWin}`)
-        console.log(`You chose! ${player}`)
         
         console.log(`End Of Round ${i+1}`)
-       // console.log(botWin++,playerWin++)
+
+        // Alert before each round
+        if(i <4){
+            alert(`Press OK to play Round ${i+2}`)   
+        }
+
+
+        // Last message to declare the winner  of all rounds
+        if (i === 4){
+             if(playerWin > botWin){
+                console.log(`The Overall Winner is ${user} with ${playerWin} scores`)
+            }
+            else if(playerWin < botWin){
+                console.log(`The Overall Winner is Computer with ${botWin} scores`)
+            }
+            else{
+                console.log('This was a draw match')
+            }
+        }
     }
 }
 rpsGame()
