@@ -3,7 +3,7 @@ let botWin=0;
 let playerWin=0;
 
 // user name
-let user= prompt("Hello! what is your name");
+let user= prompt("Hello! what is your name?");
 
 alert(`Welcome to Rock, Paper, Scissors game ${user} click OK! to begin `);
 
