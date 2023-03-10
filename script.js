@@ -1,4 +1,3 @@
-console.log('Hello World')
 //The initial Score before being incremented
 let botWin=0;
 let playerWin=0;
@@ -17,9 +16,9 @@ function computerPlay(){
     return  botChoice;
 }
 
-//
+//The playRound function that return and object with botScore and playerScore
 function playRound(playerSelection,computerSelection){
-    let  rpsDatabase,message,botScore,playerScore 
+    let  rpsDatabase,message,botScore
     rpsDatabase = {
         "rock":{"rock": 0.5,"paper":0,"scissors":1},
         "paper":{"rock": 1,"paper":0.5,"scissors":0},
@@ -35,18 +34,15 @@ function playRound(playerSelection,computerSelection){
 
     if (botScore === 1){
         message = `Bot won! ${computerSelection} beat ${playerSelection}`
-       // console.log (`Score`,botScore,playerScore);
         console.log(message)
         return ( message, {botScore:1,playerScore:0})
     }else if (botScore === 0.5){
         message = `You tied!`
-        //console.log (`Score`, botScore,playerScore);
         console.log(message)
         return {botScore:0,playerScore:0}
     }else {
         message = `You won! ${playerSelection} beat ${computerSelection}`
         console.log(message)
-      //  console.log (`Score`,botScore ,playerScore);
         return {botScore:0,playerScore:1}
     }
     
@@ -80,10 +76,10 @@ function rpsGame(){
         // Last message to declare the winner  of all rounds
         if (i === 4){
              if(playerWin > botWin){
-                console.log(`The Overall Winner is ${user} with ${playerWin} scores`)
+                console.log(`The Overall Winner is ${user} with ${playerWin} points scores`)
             }
             else if(playerWin < botWin){
-                console.log(`The Overall Winner is Computer with ${botWin} scores`)
+                console.log(`The Overall Winner is Computer with ${botWin} points scores`)
             }
             else{
                 console.log('This was a draw match')
