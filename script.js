@@ -66,14 +66,14 @@ function rpsGame(){
 
         //Bot and users choice being assigned to variables
         botChoice = computerPlay()
-        player =  prompt('Choose Rock, Paper or Scissors')
+        player =  prompt('Choose Rock, Paper or Scissors').toLowerCase()
 
         //validation of rps selection
         if(player ===rps[0] ||player ===rps[1] ||player ===rps[2]){
                 
             /*the playRound function receiving  argument
             values and being assigned to score tobe able to use it object returns*/
-            score = playRound(player.toLowerCase(),botChoice)
+            score = playRound(player,botChoice)
 
             // incrementing of scores after each round
             botWin += score.botScore
@@ -110,6 +110,7 @@ function rpsGame(){
         
 
     }
+   
 for(i=0;i<5;i++){
     rpsGame()
 }
